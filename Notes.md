@@ -40,3 +40,9 @@ MVC Framwork
 m-> Model
 v-> View
 c-> Controller
+
+# Command for create Controller
+
+php artisan make:controller <ControllerName>
+# Command for create Resourse Controller
+php artisan make:controller <ControllerName> -r

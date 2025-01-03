@@ -19,19 +19,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>email@email.com</td>
-                            <td>9876543210</td>
-                            <td>Male</td>
-                            <td>Gorakhpur</td>
-                            <td>
-                                <a href="#" class="btn btn-success">Edit</a>
-                                <a href="#" class="btn btn-warning">View</a>
-                                <a href="#" class="btn btn-danger">Delete</a>
-                            </td>
-                          </tr>
+                        @foreach ($users as $key => $item)
+                            <tr>
+                              <th scope="row">{{ ++$key }}</th>
+                              <td>{{ $item->name }}</td>
+                              <td><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
+                              <td><a href="tel:+91 {{ $item->phone }}">{{ $item->phone }}</a></td>
+                              <td>{{ $item->gender }}</td>
+                              <td>{{ $item->city }}</td>
+                              <td>
+                                  <a href="#" class="btn btn-success">Edit</a>
+                                  <a href="#" class="btn btn-warning">View</a>
+                                  <a href="#" class="btn btn-danger">Delete</a>
+                              </td>
+                            </tr>
+                          @endforeach
                         </tbody>
                       </table>
                 </div>

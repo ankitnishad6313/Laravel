@@ -7,7 +7,8 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="{{ url('/assets/css/toast.css') }}">
+    </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -58,6 +59,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ url('/assets/js/toast.js') }}"></script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
@@ -79,6 +82,26 @@
             })
         })()
     </script>
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                triggerAlert('{{ $error }}', 'error')
+            </script>
+        @endforeach
+    @endif
+    @if (session('success'))
+        <script>
+            triggerAlert("{{ session('success') }}", 'success')
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            triggerAlert("{{ session('error') }}", 'error')
+        </script>
+    @endif
+
 </body>
 
 </html>
